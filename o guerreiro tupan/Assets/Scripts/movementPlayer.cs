@@ -30,17 +30,10 @@ public class movementPlayer : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 direction = new Vector3(horizontal, 0, vertical);
-    
+        Vector3 movement = transform.TransformDirection(direction) * speed;
 
-        Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
-        if (movement != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation (movement);
-        }
-
-
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
-
+        isground = controller.SimpleMove(movement);
+        
     }
 
     void MoveTEst()
