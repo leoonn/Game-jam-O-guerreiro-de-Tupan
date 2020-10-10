@@ -11,7 +11,8 @@ public class DashPlayer : MonoBehaviour
     public float dashStoppingSpeed = 0.1f;
     float currentDashTime = maxDashTime;
     float dashSpeed = 6;
-    CharacterController controller;
+   
+
 
     public float timeDash = 2f;
      float waitSeconds;
@@ -19,7 +20,7 @@ public class DashPlayer : MonoBehaviour
 
     private void Awake()
     {
-        controller = GetComponent<CharacterController>();
+       
     }
 
     private void Start()
@@ -43,12 +44,13 @@ public class DashPlayer : MonoBehaviour
         {
             moveDirection = transform.forward * dashDistance;
             currentDashTime += dashStoppingSpeed;
+            transform.Translate(moveDirection * Time.deltaTime * dashSpeed,Space.World);
         }
         else
         {
             moveDirection = Vector3.zero;
         }
-       // controller.Move(moveDirection * Time.deltaTime * dashSpeed);
+      
     }
 }
 
