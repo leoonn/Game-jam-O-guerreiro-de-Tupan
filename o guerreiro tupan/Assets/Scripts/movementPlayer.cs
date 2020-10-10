@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class movementPlayer : MonoBehaviour
 {
+    public Transform cam;
+
+
     public float speed = 5f;
+    public float turnsmoothtime = 0.1f;
+    public float turnsmoothvelocity = 0.1f;
+    public CharacterController controller;
 
-    public Camera cam;
-    public float turnSmooth = 2f;
-    public float smoothroottime = 5f;
-
+    public bool isground;
+    
     void Start()
     {
-        speed = 5f;
+        
     }
 
     // Update is called once per frame
@@ -22,16 +26,18 @@ public class movementPlayer : MonoBehaviour
     }
     void Move()
     {
-        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 direction = new Vector3(speed * horizontal * Time.deltaTime, 0, speed * vertical);
+        Vector3 direction = new Vector3(horizontal, 0, vertical);
+        Vector3 movement = transform.TransformDirection(direction) * speed;
 
-        if (direction.magnitude > 0)
-        {
-            float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-            float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angle, ref turnSmooth, smoothroottime);
-        }
+        isground = controller.SimpleMove(movement);
+        
+    }
+
+    void MoveTEst()
+    {
+        
     }
 }
