@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     void FollowPlayer()
     {
         float step = speedEnemy * Time.deltaTime;
-        if (Vector3.Distance(transform.position, target.position) >= 0.001)
+        if (Vector3.Distance(transform.position, target.position) >= 2f)
         {
 
             transform.position = Vector3.MoveTowards(transform.position, target.position, step * Time.deltaTime);
