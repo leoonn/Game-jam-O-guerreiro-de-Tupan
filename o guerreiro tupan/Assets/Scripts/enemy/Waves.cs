@@ -126,7 +126,7 @@ public class Waves : MonoBehaviour
         {
             int rand = Random.Range(0, waves.enemy.Length);
             SpawnEnemy(waves.enemy[rand]);
-            yield return new WaitForSeconds(1f / waves.rate);
+            yield return new WaitForSeconds(1f * waves.rate);
         }
         state = SpawnState.WAITING;
 
