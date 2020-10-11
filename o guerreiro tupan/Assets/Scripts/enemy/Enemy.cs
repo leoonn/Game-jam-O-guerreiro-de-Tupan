@@ -8,20 +8,15 @@ public class Enemy : MonoBehaviour
     Animator anim;
     public float speedEnemy = 3f;
     private Transform target;
-
+    bool attack = false;
     NavMeshAgent agent;
     
     movementPlayer playerScript;
-
-    public Collider sword;
-    public int lifeEnemy;
     void Start()
     {
-        lifeEnemy = 3;
         agent = gameObject.GetComponent<NavMeshAgent>();
         anim = gameObject.GetComponent<Animator>();
 
-        
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<movementPlayer>();
     }
 
@@ -29,8 +24,8 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         target = GameObject.Find("Player").GetComponent<Transform>();
-         FollowPlayer();
-        DeadEnemy();
+        // FollowPlayer();
+        FollowPlayer();
     }
 
     void FollowPlayer()
@@ -49,39 +44,29 @@ public class Enemy : MonoBehaviour
             anim.SetFloat("speedEnemy", 0f);
 
             anim.SetBool("Attack", true);
-            sword.enabled = true;
+            
         }
         else 
         {
             anim.SetBool("Attack", false);
-            sword.enabled = false;
         }
 
         
     }
 
-    void OnDamageEnemy()
+    void OnDamagePlayer()
     {
-        lifeEnemy -= 1;
-        Debug.Log("life player: " + lifeEnemy);
+        playerScript.lifeplayer -= 1;
+        Debug.Log("life player: " + playerScript.lifeplayer);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Spear"))
+        if (collision.gameObject.tag == ("Player"))
         {
+            
+        }
+    }
 
-            OnDamageEnemy();
-            Debug.Log("life enemy" + lifeEnemy);
-          
-        }
-    }
-    void DeadEnemy()
-    {
-        if (lifeEnemy <= 0)
-        {
-            lifeEnemy = 0;
-            Destroy(gameObject);
-        }
-    }
+   
 }
