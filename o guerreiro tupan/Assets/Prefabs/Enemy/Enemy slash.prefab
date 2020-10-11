@@ -1171,7 +1171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedEnemy: 80
-  attack: 0
 --- !u!65 &5333606855079805403
 BoxCollider:
   m_ObjectHideFlags: 0
