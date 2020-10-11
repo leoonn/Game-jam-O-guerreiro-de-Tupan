@@ -8,9 +8,13 @@ public class Enemy : MonoBehaviour
     public float speedEnemy = 3f;
     private Transform target;
     bool attack = false;
+
+    movementPlayer playerScript;
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<movementPlayer>();
+        
     }
 
     // Update is called once per frame
@@ -28,15 +32,17 @@ public class Enemy : MonoBehaviour
 
             transform.position = Vector3.MoveTowards(transform.position, target.position, step * Time.deltaTime);
             transform.LookAt(target);
-            anim.SetFloat("speed enemy", 1);
+            anim.SetFloat("speedEnemy", 1f);
+            anim.SetBool("Attack", false);
         }
-        else if (Vector3.Distance(transform.position, target.position) <= 1f)
+         if (Vector3.Distance(transform.position, target.position) <= 1f)
         {
-            anim.SetFloat("speed enemy", 0);
+            anim.SetFloat("speedEnemy", 0f);
+            OnDamagePlayer();
             attack = true;
         }
 
-        if (attack)
+        if (attack == true)
         {
             anim.SetBool("Attack", true);
 
@@ -45,5 +51,10 @@ public class Enemy : MonoBehaviour
         {
             anim.SetBool("Attack", false);
         }
+    }
+
+    void OnDamagePlayer()
+    {
+        playerScript.lifeplayer = -1;
     }
 }
