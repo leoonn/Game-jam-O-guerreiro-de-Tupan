@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using TMPro;
 
 public class Waves : MonoBehaviour
@@ -28,7 +29,7 @@ public class Waves : MonoBehaviour
 
     public Transform[] SpawnPoints;
 
-    float timeBetweenWaves = 2f;
+    float timeBetweenWaves = 5f;
     public float waveCountdown;
 
     private float searchCoutdown = 1f;
@@ -50,8 +51,8 @@ public class Waves : MonoBehaviour
     void Update()
     {
 
-        //TextTimeNextWave.text = "Time for next wave:" + waveCountdown.ToString("f0");
-        //TextWave.text = "Wave: " + wavecount;
+        TextTimeNextWave.text = "Time for next wave:" + waveCountdown.ToString("f0");
+        TextWave.text = "Wave: " + wavecount;
         if (state == SpawnState.WAITING)
         {
             if (!EnemyIsAlive())
@@ -106,7 +107,7 @@ public class Waves : MonoBehaviour
         if (searchCoutdown <= 0)
         {
             searchCoutdown = 1f;
-            if (GameObject.FindGameObjectWithTag("Chase") == null && GameObject.FindGameObjectWithTag("Shooter") == null)
+            if (GameObject.FindGameObjectWithTag("Enemy") == null )
             {
 
                 return false;
@@ -120,8 +121,8 @@ public class Waves : MonoBehaviour
     {
         Debug.Log("Wave: " + waves.name);
         state = SpawnState.SPAWNING;
-        //WaveCompletedText.gameObject.SetActive(false);
-        //TextTimeNextWave.gameObject.SetActive(false);
+        WaveCompletedText.gameObject.SetActive(false);
+        TextTimeNextWave.gameObject.SetActive(false);
         for (int i = 0; i < waves.count; i++)
         {
             int rand = Random.Range(0, waves.enemy.Length);
@@ -138,17 +139,19 @@ public class Waves : MonoBehaviour
         Debug.Log("Spawning enemy" + enemy.name);
 
         Transform sp = SpawnPoints[Random.Range(0, SpawnPoints.Length)];
-        Instantiate(enemy, sp.transform.position, sp.transform.rotation);
+        NavMeshHit position;
+        NavMesh.SamplePosition(sp.transform.position,out position,1, NavMesh.AllAreas );
+        Instantiate(enemy, position.position, sp.transform.rotation);
     }
     void ShowWaveCompleted()
     {
-       // WaveCompletedText.gameObject.SetActive(true);
-       // WaveCompletedText.text = WaveCompletedWrite;
+        WaveCompletedText.gameObject.SetActive(true);
+        WaveCompletedText.text = WaveCompletedWrite;
     }
 
     void TimeTextWave()
     {
-       // TextTimeNextWave.gameObject.SetActive(true);
+        TextTimeNextWave.gameObject.SetActive(true);
 
     }
 
