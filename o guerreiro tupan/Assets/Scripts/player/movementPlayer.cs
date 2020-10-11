@@ -52,10 +52,11 @@ public class movementPlayer : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && spear.enabled == false)
         {
 
             anim.SetBool("Attack", true);
+
             spear.enabled = true;
         }
         else
