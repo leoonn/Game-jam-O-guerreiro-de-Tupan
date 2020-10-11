@@ -11,14 +11,12 @@ public class movementPlayer : MonoBehaviour
     public float turnsmoothtime = 0.1f;
     public float turnsmoothvelocity = 0.1f;
 
-     ParticleSystem shock;
-
-     Collider spear;
+    public ParticleSystem shock;
+  
 
     Animator anim;
     void Start()
     {
-        spear = GameObject.FindGameObjectWithTag("Spear").GetComponent<Collider>();
         lifeplayer = 10;
         anim = gameObject.GetComponent<Animator>();
     }
@@ -28,7 +26,7 @@ public class movementPlayer : MonoBehaviour
     {
         Move();
         Attack();
-        Dead();
+        //Dead();
     }
     void Move()
     {
@@ -52,17 +50,14 @@ public class movementPlayer : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && spear.enabled == false)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
 
             anim.SetBool("Attack", true);
-
-            spear.enabled = true;
         }
         else
         {
             anim.SetBool("Attack", false);
-            spear.enabled = false;
         }
     }
 
