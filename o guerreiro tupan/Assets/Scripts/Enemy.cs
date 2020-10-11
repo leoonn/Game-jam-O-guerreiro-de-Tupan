@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     Animator anim;
     public float speedEnemy = 3f;
     public Transform target;
-
+    bool attack = false;
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
@@ -23,11 +23,27 @@ public class Enemy : MonoBehaviour
     void FollowPlayer()
     {
         float step = speedEnemy * Time.deltaTime;
-        if (Vector3.Distance(transform.position, target.position) >= 2f)
+        if (Vector3.Distance(transform.position, target.position) > 1f)
         {
 
             transform.position = Vector3.MoveTowards(transform.position, target.position, step * Time.deltaTime);
-            transform.rotation = Quaternion.LookRotation(target.position * Time.deltaTime);
+            transform.LookAt(target);
+            anim.SetFloat("speed enemy", 1);
+        }
+        else if (Vector3.Distance(transform.position, target.position) <= 1f)
+        {
+            anim.SetFloat("speed enemy", 0);
+            attack = true;
+        }
+
+        if (attack)
+        {
+            anim.SetBool("Attack", true);
+
+        }
+        else 
+        {
+            anim.SetBool("Attack", false);
         }
     }
 }

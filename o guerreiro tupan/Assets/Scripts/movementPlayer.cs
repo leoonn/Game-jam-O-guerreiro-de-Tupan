@@ -10,8 +10,8 @@ public class movementPlayer : MonoBehaviour
     public float speed = 5f;
     public float turnsmoothtime = 0.1f;
     public float turnsmoothvelocity = 0.1f;
-   
 
+    public ParticleSystem shock;
   
 
     Animator anim;
@@ -42,10 +42,6 @@ public class movementPlayer : MonoBehaviour
         {
             anim.SetFloat("speed", 0);
         }
-
-        
-        
-        
 
     }
 
