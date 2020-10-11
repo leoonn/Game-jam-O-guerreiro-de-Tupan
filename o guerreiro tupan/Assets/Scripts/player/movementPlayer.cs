@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class movementPlayer : MonoBehaviour
 {
-  
 
+    public int lifeplayer;
 
     public float speed = 5f;
     public float turnsmoothtime = 0.1f;
@@ -17,6 +17,7 @@ public class movementPlayer : MonoBehaviour
     Animator anim;
     void Start()
     {
+        lifeplayer = 10;
         anim = gameObject.GetComponent<Animator>();
     }
 
