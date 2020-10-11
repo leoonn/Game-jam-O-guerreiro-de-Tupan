@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Enemy
   - sword
-  - Spear
   layers:
   - Default
   - TransparentFX
