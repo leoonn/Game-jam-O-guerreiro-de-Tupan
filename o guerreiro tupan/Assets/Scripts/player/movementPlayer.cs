@@ -26,6 +26,7 @@ public class movementPlayer : MonoBehaviour
     {
         Move();
         Attack();
+        //Dead();
     }
     void Move()
     {
@@ -71,6 +72,17 @@ public class movementPlayer : MonoBehaviour
     {
         lifeplayer -= 1;
         Debug.Log("life player: " + lifeplayer);
+    }
+
+    void Dead()
+    {
+        if (lifeplayer <= 0)
+        {
+            
+            Destroy(gameObject);
+            Time.timeScale = 0;
+            
+        }
     }
 
 

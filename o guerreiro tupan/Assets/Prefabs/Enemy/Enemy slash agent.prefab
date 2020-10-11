@@ -1085,8 +1085,9 @@ GameObject:
   - component: {fileID: 9147618926063942690}
   - component: {fileID: 9147618926063942689}
   - component: {fileID: 5333606855079805403}
+  - component: {fileID: 2572728843246829625}
   m_Layer: 0
-  m_Name: Enemy slash
+  m_Name: Enemy slash 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1184,6 +1185,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.7527953, y: 0.8259182, z: 3.419058}
   m_Center: {x: -0.012015671, y: 1.4798068, z: 1.2095306}
+--- !u!195 &2572728843246829625
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229122309125292779}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.25
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 4.85
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8769612862678999367
 GameObject:
   m_ObjectHideFlags: 0
