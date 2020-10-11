@@ -33,24 +33,21 @@ public class Enemy : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.position, step * Time.deltaTime);
             transform.LookAt(target);
             anim.SetFloat("speedEnemy", 1f);
-            anim.SetBool("Attack", false);
+
         }
-         if (Vector3.Distance(transform.position, target.position) <= 1f)
+        if (Vector3.Distance(transform.position, target.position) <= 1f)
         {
             anim.SetFloat("speedEnemy", 0f);
-            OnDamagePlayer();
-            attack = true;
-        }
 
-        if (attack == true)
-        {
             anim.SetBool("Attack", true);
-
+            OnDamagePlayer();
         }
         else 
         {
             anim.SetBool("Attack", false);
         }
+
+        
     }
 
     void OnDamagePlayer()
