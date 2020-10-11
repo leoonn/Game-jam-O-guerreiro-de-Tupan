@@ -13,8 +13,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<movementPlayer>();
-        
+
+                playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<movementPlayer>();
     }
 
     // Update is called once per frame
@@ -33,14 +33,14 @@ public class Enemy : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.position, step * Time.deltaTime);
             transform.LookAt(target);
             anim.SetFloat("speedEnemy", 1f);
-
+            
         }
         if (Vector3.Distance(transform.position, target.position) <= 1f)
         {
             anim.SetFloat("speedEnemy", 0f);
 
             anim.SetBool("Attack", true);
-            OnDamagePlayer();
+            
         }
         else 
         {
@@ -52,6 +52,15 @@ public class Enemy : MonoBehaviour
 
     void OnDamagePlayer()
     {
-        playerScript.lifeplayer = -1;
+        playerScript.lifeplayer -= 1;
+        Debug.Log("life player: " + playerScript.lifeplayer);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == ("Player"))
+        {
+            OnDamagePlayer();
+        }
     }
 }

@@ -261,6 +261,11 @@ PrefabInstance:
       propertyPath: m_Range
       value: 2.4106255
       objectReference: {fileID: 0}
+    - target: {fileID: 2542863490994134353, guid: cdd8d4376de73c449b36205e471f1c57,
+        type: 3}
+      propertyPath: lifeplayer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2648303094594340687, guid: cdd8d4376de73c449b36205e471f1c57,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -319,6 +324,11 @@ PrefabInstance:
     - target: {fileID: 3425965044736548341, guid: cdd8d4376de73c449b36205e471f1c57,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425965044736548341, guid: cdd8d4376de73c449b36205e471f1c57,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6521463154267891482, guid: cdd8d4376de73c449b36205e471f1c57,
@@ -390,10 +400,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2862816
+  m_Radius: 0.26060295
   m_Height: 1.3110476
   m_Direction: 1
-  m_Center: {x: -0.017467499, y: 0.5764508, z: 0}
+  m_Center: {x: -0.017467499, y: 0.5764508, z: 0.025678635}
 --- !u!1 &307417445
 GameObject:
   m_ObjectHideFlags: 0
@@ -5253,6 +5263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedEnemy: 90
+  attack: 0
 --- !u!54 &509461420
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15901,6 +15912,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182601008738022233, guid: d53dfe1c951aba84194b135836895f06,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8229122309125292779, guid: d53dfe1c951aba84194b135836895f06,
         type: 3}
