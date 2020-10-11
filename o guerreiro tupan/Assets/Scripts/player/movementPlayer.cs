@@ -59,5 +59,19 @@ public class movementPlayer : MonoBehaviour
             anim.SetBool("Attack", false);
         }
     }
-   
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("sword"))
+        {
+            OnDamagePlayer();
+        }
+    }
+    void OnDamagePlayer()
+    {
+        lifeplayer -= 1;
+        Debug.Log("life player: " + lifeplayer);
+    }
+
+
 }
