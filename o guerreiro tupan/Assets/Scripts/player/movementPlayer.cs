@@ -24,6 +24,7 @@ public class movementPlayer : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+        Attack();
     }
     void Move()
     {
@@ -45,5 +46,17 @@ public class movementPlayer : MonoBehaviour
 
     }
 
+    void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+
+            anim.SetBool("Attack", true);
+        }
+        else
+        {
+            anim.SetBool("Attack", false);
+        }
+    }
    
 }

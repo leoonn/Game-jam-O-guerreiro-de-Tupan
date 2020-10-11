@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     Animator anim;
     public float speedEnemy = 3f;
-    public Transform target;
+    private Transform target;
     bool attack = false;
     void Start()
     {
@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        target = GameObject.Find("Player").GetComponent<Transform>();
         FollowPlayer();
     }
 
